@@ -1,0 +1,22 @@
+.step-order-container-mob{
+  width: 100%;
+  height: 172px;
+  position: relative;
+  grid-column: 1/-1;
+  grid-row: 1/4;
+  // background-image: url(../../assets/bg-sidebar-mobile.svg);
+}
+
+.step-order-mob{
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar-mob-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
