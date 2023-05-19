@@ -1,6 +1,10 @@
+@import "./styles/abstracts/variables";
 @import "./styles/base/base";
+@import "./styles/base/typography";
 @import "./styles/layouts/main-grid";
 @import "./styles/layouts/step-container-mob";
 @import "./styles/layouts/main-content";
 @import "./styles/layouts/btn-container-mob";
 @import "./styles/components/step-order-mob";
+@import "./styles/components/step-circle";
+@import "./styles/components/inputs";

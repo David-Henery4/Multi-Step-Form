@@ -4,12 +4,20 @@
   position: relative;
   grid-column: 1/-1;
   grid-row: 1/4;
+  padding-top: 3.2rem;
   // background-image: url(../../assets/bg-sidebar-mobile.svg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .step-order-mob{
   position: relative;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
 }
 
 .sidebar-mob-bg{
