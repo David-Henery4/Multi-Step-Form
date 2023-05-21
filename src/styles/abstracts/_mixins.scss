@@ -1,0 +1,18 @@
+
+@mixin respond ($breakpoint){
+  @if $breakpoint == mob {
+    @media (min-width: 31.25em){ // 500px
+      @content
+    };
+  };
+  @if $breakpoint == tab {
+    @media (min-width: 37.5em) { // 600px
+      @content
+    };
+  };
+  @if $breakpoint == mdTab {
+    @media (min-width: 42.81em) { // 685px
+      @content
+    };
+  };
+}

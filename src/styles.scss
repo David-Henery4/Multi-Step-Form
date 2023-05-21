@@ -1,3 +1,4 @@
+@import "./styles/abstracts/mixins";
 @import "./styles/abstracts/variables";
 @import "./styles/base/base";
 @import "./styles/base/typography";
@@ -6,6 +7,7 @@
 @import "./styles/layouts/main-content";
 @import "./styles/layouts/btn-container-mob";
 @import "./styles/components/btns";
+@import "./styles/components/userInfo";
 @import "./styles/components/step-order-mob";
 @import "./styles/components/step-circle";
 @import "./styles/components/inputs";
