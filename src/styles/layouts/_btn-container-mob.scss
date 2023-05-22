@@ -21,4 +21,7 @@
   @include respond(tab) {
     padding: 1.6rem 10rem;
   }
+  @include respond(lap) {
+    display: none;
+  }
 }

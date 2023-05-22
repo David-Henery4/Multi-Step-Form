@@ -15,4 +15,9 @@
       @content
     };
   };
+  @if $breakpoint == lap {
+    @media (min-width: 64.06em) { // 1025px
+      @content
+    };
+  };
 }

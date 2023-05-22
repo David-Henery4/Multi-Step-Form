@@ -9,5 +9,15 @@
     max-width: 485px;
     margin: 0 auto;
   }
+  @include respond (lap) {
+    grid-row: auto;
+    grid-column: auto;
+    max-width: 940px;
+    margin: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: min-content 100px 1fr 84px;
+    padding: 1.6rem;
+  }
 }
 

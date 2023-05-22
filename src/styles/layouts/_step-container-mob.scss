@@ -9,6 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  @include respond(lap) {
+    display: none;
+  }
 }
 
 .step-order-mob{

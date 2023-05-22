@@ -8,7 +8,7 @@ const StepContainerMob = () => {
       <img
         className="sidebar-mob-bg"
         src={sidebarMob}
-        alt="background graphic for the sidebar"
+        alt="background graphic for the sidebar for sizes up till lap screens"
       />
       <div className="step-order-mob">
         <div className="step-circle step-circle--active">
