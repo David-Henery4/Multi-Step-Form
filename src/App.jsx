@@ -1,4 +1,4 @@
-import { StepContainerMob, BtnContainerMob, NextPrevBtns } from "./components";
+import { StepContainerMob, BtnContainerMob, NextPrevBtns, StepCircles } from "./components";
 import sidebarDesk from "./assets/bg-sidebar-desktop.svg";
 
 function App() {
@@ -9,6 +9,9 @@ function App() {
       {/**/}
       <main className="main-content">
         <div className="step-container-desk">
+          <div className="step-container-desk__labels-container">
+            <StepCircles />
+          </div>
           <img
             className="step-container-desk__graphic"
             src={sidebarDesk}
