@@ -1,5 +1,5 @@
 import {StepCircles} from "../components"
-import { UserInfo } from "../pages";
+import { UserInfo, PlanPage } from "../pages";
 import sidebarDesk from "../assets/bg-sidebar-desktop.svg";
 
 
@@ -16,7 +16,8 @@ const MainContentContainer = () => {
           alt="background graphic for the sidebar for laptop and above size screens"
         />
       </div>
-      <UserInfo/>
+      {/* <UserInfo/> */}
+      <PlanPage/>
     </main>
   );
 }
