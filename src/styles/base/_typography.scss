@@ -28,3 +28,20 @@ body{
   letter-spacing: 1px;
   font-weight: 700;
 }
+
+.plan-label-header{
+  font-size: $bodyText;
+  color: $marineBlue;
+}
+
+.plan-label-price{
+  font-size: $stepLabelText;
+  line-height: 2rem;
+  color: $coolGrey;
+}
+
+.step-label-offer{
+  font-size: $labelHeaderText;
+  line-height: 2rem;
+  color: $marineBlue;
+}

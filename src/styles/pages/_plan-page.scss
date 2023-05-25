@@ -2,8 +2,8 @@
   display: grid;
   gap: 2.2rem;
   //
-  &-content{
-    
+  &-content {
+    width: 100%;
   }
   //
   @include respond(lap) {
@@ -14,5 +14,55 @@
     flex-direction: column;
     padding: 4rem 0 1.6rem;
     gap: 4rem;
+  }
+}
+
+// MIGHT PUT IN OWN FILE
+
+.plan-page-content-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.2rem;
+  @include respond(lap) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &-item {
+    border-radius: 0.8rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.6rem;
+    padding: 1.6rem;
+    border: 1px solid $borderColour;
+    &:hover{
+      cursor: pointer;
+    }
+    @include respond(lap) {
+      flex-direction: column;
+      gap: 4rem;
+    }
+    &--active {
+      border: 1px solid $purplishBlue;
+    }
+    &-text {
+      display: grid;
+      gap: 0.7rem;
+    }
+  }
+}
+
+.plan-details {
+  display: inline-flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  align-items: flex-start;
+  gap: 0.3rem;
+  @include respond(lap) {
+    gap: 0.6rem;
   }
 }

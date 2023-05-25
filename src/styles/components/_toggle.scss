@@ -1,0 +1,12 @@
+.toggle{
+  width: 3.8rem;
+  height: 2rem;
+  background-color: $marineBlue;
+  border-radius: 10px;
+  &__ball{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 100%;
+    background-color: $white;
+  }
+}
