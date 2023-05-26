@@ -40,6 +40,15 @@ body{
   color: $coolGrey;
 }
 
+.plan-switch-label{
+  font-size: $stepLabelText;
+  color: $coolGrey;
+  font-weight: 500;
+  &--active{
+    color: $marineBlue;
+  }
+}
+
 .step-label-offer{
   font-size: $labelHeaderText;
   line-height: 2rem;

@@ -1,9 +1,12 @@
+import { useState } from "react";
 import {StepCircles} from "../components"
-import { UserInfo, PlanPage } from "../pages";
+import { UserInfo, PlanPage, AddOnsPage } from "../pages";
 import sidebarDesk from "../assets/bg-sidebar-desktop.svg";
 
 
 const MainContentContainer = () => {
+  const [isPlanToggleYearly,setIsPlanToggleYearly] = useState(false)
+  //
   return (
     <main className="main-content">
       <div className="step-container-desk">
@@ -17,7 +20,8 @@ const MainContentContainer = () => {
         />
       </div>
       {/* <UserInfo/> */}
-      <PlanPage/>
+      {/* <PlanPage planToggle={{isPlanToggleYearly, setIsPlanToggleYearly}}/> */}
+      <AddOnsPage/>
     </main>
   );
 }

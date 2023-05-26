@@ -1,9 +1,15 @@
-
+import { ContentHeaders } from "../components";
 
 const AddOnsPage = () => {
   return (
-    <div>AddOnsPage</div>
-  )
-}
+    <div className="add-ons-page">
+      <ContentHeaders
+        title="Pick add-ons"
+        subTitle="Add-ons help enhance your gaming experience."
+      />
+      
+    </div>
+  );
+};
 
-export default AddOnsPage
+export default AddOnsPage;

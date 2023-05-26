@@ -1,7 +1,9 @@
 import { ContentHeaders, NextPrevBtns } from "../components";
 import planDetails from "../miscData/planDetails";
 
-const PlanPage = () => {
+const PlanPage = ({planToggle}) => {
+  const { isPlanToggleYearly, setIsPlanToggleYearly } = planToggle;
+  // () => {}
   return (
     <div className="plan-page">
       <ContentHeaders
@@ -32,12 +34,37 @@ const PlanPage = () => {
             );
           })}
         </div>
-        <div>
-          <p>Monthly</p>
-          <div className="toggle">
-            <div className="toggle__ball"></div>
+        <div className="plan-switch-container">
+          <p
+            className={`${
+              isPlanToggleYearly
+                ? "plan-switch-label"
+                : "plan-switch-label plan-switch-label--active"
+            }`}
+          >
+            Monthly
+          </p>
+          <div
+            className="toggle"
+            onClick={() => setIsPlanToggleYearly(!isPlanToggleYearly)}
+          >
+            <div
+              className={`${
+                isPlanToggleYearly
+                  ? "toggle__ball toggle__ball--active"
+                  : "toggle__ball"
+              }`}
+            ></div>
           </div>
-          <p>Yearly</p>
+          <p
+            className={`${
+              isPlanToggleYearly
+                ? "plan-switch-label plan-switch-label--active"
+                : "plan-switch-label"
+            }`}
+          >
+            Yearly
+          </p>
         </div>
       </div>
       <div className="btn-container-desk">

@@ -1,12 +1,37 @@
+.plan-switch-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+  background-color: $AlabasterVeryLightGrey;
+  padding: 1.6rem;
+  border-radius: .8rem;
+}
+
+
 .toggle{
   width: 3.8rem;
   height: 2rem;
   background-color: $marineBlue;
   border-radius: 10px;
+  position: relative;
+  &:hover{
+    cursor: pointer;
+  }
   &__ball{
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    translate: -0 -50%;
+    transition: .2s all;
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 100%;
     background-color: $white;
+    &--active{
+      translate: 158% -50%;
+      transition: .2s all;
+    }
   }
 }
