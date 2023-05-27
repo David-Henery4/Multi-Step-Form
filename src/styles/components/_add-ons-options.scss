@@ -1,0 +1,33 @@
+.add-ons-options {
+  width: 100%;
+  display: grid;
+  gap: 1.2rem;
+  grid-auto-rows: 1fr;
+  &-option {
+    width: 100%;
+    padding: 1.2rem 1.6rem;
+    display: grid;
+    justify-content: flex-start;
+    align-items: center;
+    border: $borderColour 1px solid;
+    border-radius: 8px;
+    gap: 1.6rem;
+    grid-template-columns: min-content 1fr min-content;
+    &--active{
+      border: $purplishBlue 1px solid;
+    }
+    input {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 4px;
+      outline: none;
+      border: 1px $borderColour solid;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    div {
+      margin: 0 auto 0 0;
+    }
+  }
+}

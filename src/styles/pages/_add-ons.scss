@@ -1,5 +1,7 @@
 .add-ons-page{
   width: 100%;
+  display: grid;
+  gap: 2.2rem;
   @include respond(lap) {
     grid-column: 3/4;
     display: flex;
@@ -10,3 +12,4 @@
     gap: 4rem;
   }
 }
+

@@ -32,6 +32,7 @@ body{
 .plan-label-header{
   font-size: $bodyText;
   color: $marineBlue;
+  font-weight: 500;
 }
 
 .plan-label-price{
@@ -53,4 +54,23 @@ body{
   font-size: $labelHeaderText;
   line-height: 2rem;
   color: $marineBlue;
+}
+
+.add-ons-label{
+  font-size: $stepLabelText;
+  color: $marineBlue;
+  font-weight: 500;
+}
+
+.add-ons-desc{
+  font-size: $labelHeaderText;
+  font-weight: 400;
+  line-height: 20px;
+  color: $coolGrey;
+}
+
+.add-ons-price{
+  @extend .add-ons-desc;
+  color: $purplishBlue;
+  text-align: right;
 }
