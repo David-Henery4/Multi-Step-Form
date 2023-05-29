@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { ContentHeaders, NextPrevBtns } from "../components";
 // WILL PROB PUT IN STATE DATA
-import addOnsDetails from "../miscData/addOnsDetails";
+// import addOnsDetails from "../miscData/addOnsDetails";
+import useGlobalContext from "../context/useGlobalContext";
 
 const AddOnsPage = () => {
+  const { overallDetails, setOverallDetails } = useGlobalContext();
+  const { addOnsDetails } = overallDetails;
   // const [addOns,setAddOns] = useState(addOnsDetails)
   //
   return (
@@ -27,16 +30,19 @@ const AddOnsPage = () => {
                 type="checkbox"
                 name={`${addOn?.name}`}
                 id={`${addOn?.name}`}
-                // onClick={(e) => {
-                //   if (e.target.checked) {
-                //     setAddOns((oldValues) => {
-                //       return {
-                //         ...oldValues,
-                //         isAddOnChoosen: true
-                //       }
-                //     })
-                //   }
-                // }}
+                onClick={(e) => {
+                  setOverallDetails((oldValues) => {
+                    return {
+                      ...oldValues,
+                      addOnsDetails: oldValues?.addOnsDetails.map((add) => {
+                        if (add?.id === addOn?.id)
+                          add.isAddOnChoosen = e.target.checked;
+
+                        return add;
+                      }),
+                    };
+                  });
+                }}
                 // checked
               />
               <div>

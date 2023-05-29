@@ -1,10 +1,14 @@
 import { useState } from "react";
 import {StepCircles} from "../components"
-import { UserInfo, PlanPage, AddOnsPage } from "../pages";
+import { UserInfo, PlanPage, AddOnsPage, FinishingUpPage, ThankYouPage } from "../pages";
 import sidebarDesk from "../assets/bg-sidebar-desktop.svg";
+import useGlobalContext from "../context/useGlobalContext";
 
 
 const MainContentContainer = () => {
+  const data = useGlobalContext()
+  // console.log(data)
+  //
   const [isPlanToggleYearly,setIsPlanToggleYearly] = useState(false)
   //
   return (
@@ -21,7 +25,8 @@ const MainContentContainer = () => {
       </div>
       {/* <UserInfo/> */}
       {/* <PlanPage planToggle={{isPlanToggleYearly, setIsPlanToggleYearly}}/> */}
-      <AddOnsPage/>
+      {/* <AddOnsPage/> */}
+      <FinishingUpPage/>
     </main>
   );
 }
