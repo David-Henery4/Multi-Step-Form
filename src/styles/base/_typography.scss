@@ -1,7 +1,7 @@
 body{
   font-family: 'Ubuntu', sans-serif;
   font-weight: 400; // 500 & 700 available also
-  font-size: 1.6rem;
+  font-size: $bodyText;
 }
 
 .main-header{
@@ -39,6 +39,7 @@ body{
   font-size: $stepLabelText;
   line-height: 2rem;
   color: $coolGrey;
+  font-weight: 400;
 }
 
 .plan-switch-label{
@@ -60,6 +61,23 @@ body{
   font-size: $stepLabelText;
   color: $marineBlue;
   font-weight: 500;
+  @include respond (lap) {
+    font-size: $bodyText
+  }
+}
+
+.final-plan-price-label{
+  font-size: $stepLabelText;
+  color: $marineBlue;
+  font-weight: 700;
+  line-height: 2rem;
+  @include respond (lap) {
+    font-size: $bodyText
+  }
+}
+.final-addons-price-label{
+  @extend .final-plan-price-label;
+  font-weight: 400;
 }
 
 .add-ons-desc{
@@ -73,4 +91,11 @@ body{
   @extend .add-ons-desc;
   color: $purplishBlue;
   text-align: right;
+}
+
+.total-price-label{
+  font-size: $totalPriceLabel;
+  font-weight: 700;
+  line-height: 2rem;
+  color: $purplishBlue;
 }

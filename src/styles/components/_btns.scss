@@ -3,6 +3,9 @@
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
+  &:hover{
+    cursor: pointer;
+  }
   &-back{
     background-color: transparent;
     color: $coolGrey;

@@ -1,3 +1,44 @@
 .finishing-up-details{
-  
+  width: 100%;
+  display: grid;
+  gap: 2.4rem;
+  &-prices{
+    width: 100%;
+    padding: 1.6rem;
+    border-radius: 8px;
+    background-color: $AlabasterVeryLightGrey;
+    @include respond (lap) {
+      padding: 1.6rem 2.4rem 2.4rem;
+    };
+    &-plan{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 0 1.2rem 0;
+      border-bottom: 2px solid rgba($coolGrey,.2);
+      @include respond (lap){
+        padding: 0 0 2.4rem 0;
+      }
+    }
+    &-addons{
+      padding: 1.2rem 0 0 0;
+      display: grid;
+      gap: 1.2rem;
+      div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @include respond (lap) {
+        gap: 1.6rem;
+      }
+    }
+  }
+  &-total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.6rem;
+  }
 }
