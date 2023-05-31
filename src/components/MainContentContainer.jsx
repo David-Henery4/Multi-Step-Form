@@ -26,7 +26,8 @@ const MainContentContainer = () => {
       {/* <UserInfo/> */}
       {/* <PlanPage planToggle={{isPlanToggleYearly, setIsPlanToggleYearly}}/> */}
       {/* <AddOnsPage/> */}
-      <FinishingUpPage/>
+      {/* <FinishingUpPage/> */}
+      <ThankYouPage/>
     </main>
   );
 }

@@ -99,3 +99,12 @@ body{
   line-height: 2rem;
   color: $purplishBlue;
 }
+
+.thank-you-title{
+  font-size: $thankYouTitle;
+  font-weight: 700;
+  color: $marineBlue;
+  @include respond (lap) {
+    font-size: $thankYouTitleLap;
+  }
+}
