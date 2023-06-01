@@ -1,6 +1,5 @@
 import { StepContainerMob, BtnContainerMob, MainContentContainer } from "./components";
 
-
 function App() {
   //
   return (

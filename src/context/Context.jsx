@@ -1,17 +1,30 @@
 import { useState, createContext } from "react";
-import {addOnsDetails, planDetails} from "../miscData"
+import { addOnsDetails, planDetails, userInputDetails } from "../miscData";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [overallDetails,setOverallDetails] = useState({
+  const [isPlanToggleYearly, setIsPlanToggleYearly] = useState(false);
+  const [overallDetails, setOverallDetails] = useState({
     addOnsDetails,
-    planDetails
-  })
+    planDetails,
+    userInputDetails,
+  });
   // const [defaultAddOnsValues,setDefaultAddOnsValues] = useState(addOnsDetails)
   // const [defaultPlanValues, setDefaultPlanValues] = useState(planDetails);
   //
-  return <AppContext.Provider value={{overallDetails, setOverallDetails}}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider
+      value={{
+        overallDetails,
+        setOverallDetails,
+        isPlanToggleYearly,
+        setIsPlanToggleYearly,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export { AppContext, AppProvider };

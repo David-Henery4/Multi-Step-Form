@@ -1,8 +1,10 @@
 import { ContentHeaders, NextPrevBtns } from "../components";
 import planDetails from "../miscData/planDetails";
+import useGlobalContext from "../context/useGlobalContext";
 
-const PlanPage = ({planToggle}) => {
-  const { isPlanToggleYearly, setIsPlanToggleYearly } = planToggle;
+const PlanPage = () => {
+  const data = useGlobalContext()
+  const { isPlanToggleYearly, setIsPlanToggleYearly } = data;
   // () => {}
   return (
     <div className="plan-page">

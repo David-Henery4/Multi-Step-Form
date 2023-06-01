@@ -1,15 +1,18 @@
 import { useState } from "react";
 import {StepCircles} from "../components"
 import { UserInfo, PlanPage, AddOnsPage, FinishingUpPage, ThankYouPage } from "../pages";
+import steps from "../miscData/steps";
 import sidebarDesk from "../assets/bg-sidebar-desktop.svg";
 import useGlobalContext from "../context/useGlobalContext";
 
 
 const MainContentContainer = () => {
-  const data = useGlobalContext()
-  // console.log(data)
+  // const [currentPage,setCurrentPage] = useState([
+  //   <UserInfo key={1}/>, <PlanPage key={2}/>
+  // ])
+  const [currentStep,setCurrentStep] = useState(steps[1])
+  const { overallDetails, setOverallDetails } = useGlobalContext();
   //
-  const [isPlanToggleYearly,setIsPlanToggleYearly] = useState(false)
   //
   return (
     <main className="main-content">
@@ -24,10 +27,12 @@ const MainContentContainer = () => {
         />
       </div>
       {/* <UserInfo/> */}
-      {/* <PlanPage planToggle={{isPlanToggleYearly, setIsPlanToggleYearly}}/> */}
+      {/* <PlanPage /> */}
       {/* <AddOnsPage/> */}
       {/* <FinishingUpPage/> */}
-      <ThankYouPage/>
+      {/* <ThankYouPage/> */}
+      {/* {currentPage[1]} */}
+      {currentStep}
     </main>
   );
 }
