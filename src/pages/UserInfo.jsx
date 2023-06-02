@@ -1,8 +1,8 @@
 import {NextPrevBtns, ContentHeaders} from "../components"
 import useGlobalContext from "../context/useGlobalContext";
 
-const UserInfo = () => {
-  const { overallDetails, setOverallDetails } = useGlobalContext();
+const UserInfo = ({ overallDetails, setOverallDetails }) => {
+  // const { overallDetails, setOverallDetails } = useGlobalContext();
   const { userInputDetails } = overallDetails;
   return (
     <div className="user-info">
@@ -81,6 +81,6 @@ const UserInfo = () => {
       </div>
     </div>
   );
-}
+};
 
 export default UserInfo

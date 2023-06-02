@@ -7,11 +7,12 @@ import useGlobalContext from "../context/useGlobalContext";
 
 
 const MainContentContainer = () => {
-  // const [currentPage,setCurrentPage] = useState([
-  //   <UserInfo key={1}/>, <PlanPage key={2}/>
-  // ])
-  const [currentStep,setCurrentStep] = useState(steps[1])
-  const { overallDetails, setOverallDetails } = useGlobalContext();
+  const app = useGlobalContext();
+  const [currentPage,setCurrentPage] = useState([
+    <UserInfo key={1} {...app}/>
+  ])
+  // const [currentStep,setCurrentStep] = useState(steps[1])
+  // const { overallDetails, setOverallDetails } = useGlobalContext();
   //
   //
   return (
@@ -31,8 +32,8 @@ const MainContentContainer = () => {
       {/* <AddOnsPage/> */}
       {/* <FinishingUpPage/> */}
       {/* <ThankYouPage/> */}
-      {/* {currentPage[1]} */}
-      {currentStep}
+      {currentPage[0]}
+      {/* {currentStep} */}
     </main>
   );
 }
