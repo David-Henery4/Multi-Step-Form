@@ -1,19 +1,18 @@
 import { useState } from "react";
-import {StepCircles} from "../components"
-import { UserInfo, PlanPage, AddOnsPage, FinishingUpPage, ThankYouPage } from "../pages";
-import steps from "../miscData/steps";
+import { StepCircles } from "../components";
+import {
+  UserInfo,
+  PlanPage,
+  AddOnsPage,
+  FinishingUpPage,
+  ThankYouPage,
+} from "../pages";
 import sidebarDesk from "../assets/bg-sidebar-desktop.svg";
-import useGlobalContext from "../context/useGlobalContext";
+
 
 
 const MainContentContainer = () => {
-  const app = useGlobalContext();
-  const [currentPage,setCurrentPage] = useState([
-    <UserInfo key={1} {...app}/>
-  ])
-  // const [currentStep,setCurrentStep] = useState(steps[1])
-  // const { overallDetails, setOverallDetails } = useGlobalContext();
-  //
+  const [currentStep, setCurrentStep] = useState(0);
   //
   return (
     <main className="main-content">
@@ -27,15 +26,13 @@ const MainContentContainer = () => {
           alt="background graphic for the sidebar for laptop and above size screens"
         />
       </div>
-      {/* <UserInfo/> */}
-      {/* <PlanPage /> */}
-      {/* <AddOnsPage/> */}
-      {/* <FinishingUpPage/> */}
-      {/* <ThankYouPage/> */}
-      {currentPage[0]}
-      {/* {currentStep} */}
+      {currentStep <= 1 && <UserInfo />}
+      {currentStep === 2 && <PlanPage />}
+      {currentStep === 3 && <AddOnsPage />}
+      {currentStep >= 4 && <FinishingUpPage />}
+      {/* {currentStep >= 5 && <ThankYouPage />} */}
     </main>
   );
-}
+};
 
-export default MainContentContainer
+export default MainContentContainer;

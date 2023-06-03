@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StepContainerMob, BtnContainerMob, MainContentContainer } from "./components";
 
 function App() {

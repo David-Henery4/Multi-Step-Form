@@ -1,9 +1,10 @@
 import {NextPrevBtns, ContentHeaders} from "../components"
 import useGlobalContext from "../context/useGlobalContext";
 
-const UserInfo = ({ overallDetails, setOverallDetails }) => {
-  // const { overallDetails, setOverallDetails } = useGlobalContext();
+const UserInfo = () => {
+  const { overallDetails, setOverallDetails } = useGlobalContext();
   const { userInputDetails } = overallDetails;
+  //
   return (
     <div className="user-info">
       {/* PROPS ARE TEMP */}
