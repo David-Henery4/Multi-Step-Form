@@ -8,11 +8,10 @@ import {
   ThankYouPage,
 } from "../pages";
 import sidebarDesk from "../assets/bg-sidebar-desktop.svg";
-
-
+import useGlobalContext from "../context/useGlobalContext";
 
 const MainContentContainer = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+  const { currentStep, isFormComplete } = useGlobalContext();
   //
   return (
     <main className="main-content">
@@ -26,11 +25,11 @@ const MainContentContainer = () => {
           alt="background graphic for the sidebar for laptop and above size screens"
         />
       </div>
-      {currentStep <= 1 && <UserInfo />}
-      {currentStep === 2 && <PlanPage />}
-      {currentStep === 3 && <AddOnsPage />}
-      {currentStep >= 4 && <FinishingUpPage />}
-      {/* {currentStep >= 5 && <ThankYouPage />} */}
+      {currentStep <= 1 && !isFormComplete && <UserInfo />}
+      {currentStep === 2 && !isFormComplete && <PlanPage />}
+      {currentStep === 3 && !isFormComplete && <AddOnsPage />}
+      {currentStep >= 4 && !isFormComplete && <FinishingUpPage />}
+      {currentStep >= 4 && isFormComplete && <ThankYouPage />}
     </main>
   );
 };

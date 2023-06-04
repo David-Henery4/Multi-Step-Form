@@ -1,8 +1,16 @@
+import useGlobalContext from "../context/useGlobalContext";
+
 const StepCircles = () => {
+  const {currentStep} = useGlobalContext()
+  //
   return (
     <div className="step-order-mob">
       <div className="step-order-mob__label">
-        <div className="step-circle step-circle--active">
+        <div
+          className={`${
+            currentStep <= 1 ? "step-circle step-circle--active" : "step-circle"
+          }`}
+        >
           <p>1</p>
         </div>
         <div className="step-order-mob__label--wrapper">
@@ -12,7 +20,11 @@ const StepCircles = () => {
       </div>
 
       <div className="step-order-mob__label">
-        <div className="step-circle">
+        <div
+          className={`${
+            currentStep === 2 ? "step-circle step-circle--active" : "step-circle"
+          }`}
+        >
           <p>2</p>
         </div>
         <div className="step-order-mob__label--wrapper">
@@ -22,7 +34,11 @@ const StepCircles = () => {
       </div>
 
       <div className="step-order-mob__label">
-        <div className="step-circle">
+        <div className={`${
+            currentStep === 3
+              ? "step-circle step-circle--active"
+              : "step-circle"
+          }`}>
           <p>3</p>
         </div>
         <div className="step-order-mob__label--wrapper">
@@ -32,7 +48,11 @@ const StepCircles = () => {
       </div>
 
       <div className="step-order-mob__label">
-        <div className="step-circle">
+        <div className={`${
+            currentStep >= 4
+              ? "step-circle step-circle--active"
+              : "step-circle"
+          }`}>
           <p>4</p>
         </div>
         <div className="step-order-mob__label--wrapper">

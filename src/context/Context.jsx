@@ -5,7 +5,7 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [isFormComplete, setIsFormComplete] = useState(false);
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [isPlanToggleYearly, setIsPlanToggleYearly] = useState(false);
   const [overallDetails, setOverallDetails] = useState({
     addOnsDetails,

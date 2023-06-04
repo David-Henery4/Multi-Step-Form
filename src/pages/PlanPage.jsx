@@ -1,11 +1,15 @@
 import { ContentHeaders, NextPrevBtns } from "../components";
-import planDetails from "../miscData/planDetails";
 import useGlobalContext from "../context/useGlobalContext";
 
 const PlanPage = () => {
-  const data = useGlobalContext()
-  const { isPlanToggleYearly, setIsPlanToggleYearly } = data;
-  // () => {}
+  const {
+    isPlanToggleYearly,
+    setIsPlanToggleYearly,
+    overallDetails,
+    setOverallDetails,
+  } = useGlobalContext();
+  const { planDetails } = overallDetails;
+  //
   return (
     <div className="plan-page">
       <ContentHeaders
@@ -23,6 +27,37 @@ const PlanPage = () => {
                     ? "plan-page-content-options-item plan-page-content-options-item--active"
                     : "plan-page-content-options-item"
                 }`}
+                onClick={() => {
+                  setOverallDetails((prevValues) => {
+                    const { planDets =  planDetails } = prevValues;
+                    // const updated = planDetails.map((plan) => {
+                    //   if (plan.id === plans?.id) {
+                    //     plan.isActive = !plan.isActive;
+                    //   }
+                    //   return plan
+                    // });
+                    // return {
+                    //   ...prevValues,
+                    //   planDetails: updated
+                    // };
+                    //
+                    console.log(planDets)
+                    const newCopy = JSON.parse(JSON.stringify(planDets))
+                    console.log(newCopy)
+                    const updated = newCopy.map(plan => {
+                      if (plan.id === plans.id) {
+                        plan.isActive = !plan.isActive
+                      }
+                      return plan
+                    })
+                    console.log(updated)
+                    console.log(planDets)
+                    return {
+                      ...prevValues,
+                      planDetails: updated
+                    }
+                  });
+                }}
               >
                 <div>{plans?.icon && <plans.icon />}</div>
                 <div className="plan-page-content-options-item-text">
