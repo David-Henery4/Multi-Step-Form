@@ -5,7 +5,8 @@ import { ContentHeaders, NextPrevBtns } from "../components";
 import useGlobalContext from "../context/useGlobalContext";
 
 const AddOnsPage = () => {
-  const { overallDetails, setOverallDetails } = useGlobalContext();
+  const { overallDetails, setOverallDetails, isPlanToggleYearly } =
+    useGlobalContext();
   const { addOnsDetails } = overallDetails;
   // const [addOns,setAddOns] = useState(addOnsDetails)
   //
@@ -30,6 +31,7 @@ const AddOnsPage = () => {
                 type="checkbox"
                 name={`${addOn?.name}`}
                 id={`${addOn?.name}`}
+                // checked={addOn?.isAddOnChoosen}
                 onClick={(e) => {
                   setOverallDetails((oldValues) => {
                     return {
@@ -37,7 +39,6 @@ const AddOnsPage = () => {
                       addOnsDetails: oldValues?.addOnsDetails.map((add) => {
                         if (add?.id === addOn?.id)
                           add.isAddOnChoosen = e.target.checked;
-
                         return add;
                       }),
                     };
@@ -51,7 +52,11 @@ const AddOnsPage = () => {
                 </label>
                 <p className="add-ons-desc">{addOn?.desc}</p>
               </div>
-              <p className="add-ons-price">{`+$${addOn?.price}/mo`}</p>
+              <p className="add-ons-price">
+                {isPlanToggleYearly
+                  ? `+$${addOn?.pricePerYear}/yr`
+                  : `+$${addOn?.pricePerMonth}/mo`}
+              </p>
             </div>
           );
         })}

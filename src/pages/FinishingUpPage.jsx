@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { ContentHeaders, NextPrevBtns } from "../components";
+import useGlobalContext from "../context/useGlobalContext";
 
 const FinishingUpPage = () => {
+  const { isPlanToggleYearly, overallDetails } = useGlobalContext();
+  const { addOnsDetails } = overallDetails;
+  const [finalAddons,setFinalAddOns] = useState(addOnsDetails)
   return (
     <div className="finishing-up-page">
       <ContentHeaders
@@ -17,14 +22,15 @@ const FinishingUpPage = () => {
             <p className="final-plan-price-label">$90/yr</p>
           </div>
           <div className="finishing-up-details-prices-addons">
-            <div>
-              <h3 className="plan-label-price">Online service</h3>
-              <p className="final-addons-price-label">+$10/yr</p>
-            </div>
-            <div>
-              <h3 className="plan-label-price">Online service</h3>
-              <p className="final-addons-price-label">+$10/yr</p>
-            </div>
+            {addOnsDetails?.map(add => {
+              if (add?.isAddOnChoosen)
+                return (
+                  <div key={add?.id}>
+                    <h3 className="plan-label-price">Online service</h3>
+                    <p className="final-addons-price-label">+$10/yr</p>
+                  </div>
+                );
+            })}
           </div>
         </div>
         <div className="finishing-up-details-total">

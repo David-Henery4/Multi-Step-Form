@@ -29,33 +29,17 @@ const PlanPage = () => {
                 }`}
                 onClick={() => {
                   setOverallDetails((prevValues) => {
-                    const { planDets =  planDetails } = prevValues;
-                    // const updated = planDetails.map((plan) => {
-                    //   if (plan.id === plans?.id) {
-                    //     plan.isActive = !plan.isActive;
-                    //   }
-                    //   return plan
-                    // });
-                    // return {
-                    //   ...prevValues,
-                    //   planDetails: updated
-                    // };
+                    const { planDets = planDetails } = prevValues;
                     //
-                    console.log(planDets)
-                    const newCopy = JSON.parse(JSON.stringify(planDets))
-                    console.log(newCopy)
-                    const updated = newCopy.map(plan => {
-                      if (plan.id === plans.id) {
-                        plan.isActive = !plan.isActive
-                      }
-                      return plan
-                    })
-                    console.log(updated)
-                    console.log(planDets)
                     return {
                       ...prevValues,
-                      planDetails: updated
-                    }
+                      planDetails: planDets.map((p) => {
+                        plans.id === p.id
+                          ? (p.isActive = true)
+                          : (p.isActive = false);
+                        return p;
+                      }),
+                    };
                   });
                 }}
               >
@@ -63,8 +47,12 @@ const PlanPage = () => {
                 <div className="plan-page-content-options-item-text">
                   <h3 className="plan-label-header">{plans?.title}</h3>
                   <p className="plan-details">
-                    <span className="plan-label-price">{plans?.price}</span>
-                    <span className="step-label-offer">{plans?.offer}</span>
+                    <span className="plan-label-price">
+                      {isPlanToggleYearly
+                        ? `$${plans?.pricePerYear}/yr`
+                        : `$${plans?.pricePerMonth}/mo`}
+                    </span>
+                    {isPlanToggleYearly && <span className="step-label-offer">{plans?.offer}</span>}
                   </p>
                 </div>
               </div>

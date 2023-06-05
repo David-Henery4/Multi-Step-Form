@@ -7,6 +7,8 @@ const addOnsDetails = [
     desc: "Access to multiplayer games",
     isAddOnChoosen: false,
     price: 1.00,
+    pricePerYear: 10,
+    pricePerMonth: 1,
   },
   {
     id: 2,
@@ -15,6 +17,8 @@ const addOnsDetails = [
     desc: "Extra 1TB of cloud save",
     isAddOnChoosen: false,
     price: 2.00,
+    pricePerYear: 20,
+    pricePerMonth: 2,
   },
   {
     id: 3,
@@ -23,6 +27,8 @@ const addOnsDetails = [
     desc: "Custom theme on your profile",
     isAddOnChoosen: false,
     price: 2.00,
+    pricePerYear: 20,
+    pricePerMonth: 2,
   },
 ];
 
