@@ -1,11 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ContentHeaders, NextPrevBtns } from "../components";
 import useGlobalContext from "../context/useGlobalContext";
 
 const FinishingUpPage = () => {
-  const { isPlanToggleYearly, overallDetails } = useGlobalContext();
-  const { addOnsDetails } = overallDetails;
-  const [finalAddons,setFinalAddOns] = useState(addOnsDetails)
+  const { isPlanToggleYearly, overallDetails, setIsPlanToggleYearly } =
+    useGlobalContext();
+  const { addOnsDetails, planDetails } = overallDetails;
+  const [finalAddOns,setFinalAddOns] = useState([])
+  const [finalPlan,setFinalPlan] = useState([])
+  const [totalPrice,setFinalPrice] = useState(0)
+  //
+  const handleFinalCalcs = (rawAddOns, rawPlan) => {
+    const activeAddOns = rawAddOns.filter(add => add?.isAddOnChoosen)
+    setFinalAddOns(activeAddOns)
+    const activePlan = rawPlan.filter(plan => plan?.isActive)
+    setFinalPlan(activePlan)
+    const combined = [...activeAddOns,...activePlan]
+    console.log(combined)
+    const total = combined.reduce((old, curr) => {
+      isPlanToggleYearly
+        ? (old += curr.pricePerYear)
+        : (old += curr.pricePerMonth);
+      return old
+    }, 0);
+    console.log(total)
+  };
+  //
+  useEffect(() => {
+    handleFinalCalcs(addOnsDetails,planDetails)
+  }, [isPlanToggleYearly])
+  //
   return (
     <div className="finishing-up-page">
       <ContentHeaders
@@ -26,8 +50,12 @@ const FinishingUpPage = () => {
               if (add?.isAddOnChoosen)
                 return (
                   <div key={add?.id}>
-                    <h3 className="plan-label-price">Online service</h3>
-                    <p className="final-addons-price-label">+$10/yr</p>
+                    <h3 className="plan-label-price">{add?.label}</h3>
+                    <p className="final-addons-price-label">
+                      {isPlanToggleYearly
+                        ? `+$${add?.pricePerYear}/yr`
+                        : `+$${add?.pricePerMonth}/mo`}
+                    </p>
                   </div>
                 );
             })}

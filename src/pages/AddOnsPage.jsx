@@ -31,8 +31,8 @@ const AddOnsPage = () => {
                 type="checkbox"
                 name={`${addOn?.name}`}
                 id={`${addOn?.name}`}
-                // checked={addOn?.isAddOnChoosen}
-                onClick={(e) => {
+                checked={addOn?.isAddOnChoosen}
+                onChange={(e) => {
                   setOverallDetails((oldValues) => {
                     return {
                       ...oldValues,
