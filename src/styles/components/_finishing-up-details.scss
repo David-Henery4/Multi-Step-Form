@@ -10,6 +10,14 @@
     @include respond (lap) {
       padding: 1.6rem 2.4rem 2.4rem;
     };
+    &-labels{
+      h2{
+        margin-bottom: .3rem;
+        @include respond (lap){
+          margin-bottom: .7rem;
+        }
+      }
+    }
     &-plan{
       display: flex;
       justify-content: space-between;

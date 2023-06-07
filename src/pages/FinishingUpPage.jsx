@@ -6,29 +6,29 @@ const FinishingUpPage = () => {
   const { isPlanToggleYearly, overallDetails, setIsPlanToggleYearly } =
     useGlobalContext();
   const { addOnsDetails, planDetails } = overallDetails;
-  const [finalAddOns,setFinalAddOns] = useState([])
-  const [finalPlan,setFinalPlan] = useState([])
-  const [totalPrice,setFinalPrice] = useState(0)
+  const [finalAddOns, setFinalAddOns] = useState([]);
+  const [finalPlan, setFinalPlan] = useState({});
+  const [totalPrice, setFinalPrice] = useState(0);
   //
   const handleFinalCalcs = (rawAddOns, rawPlan) => {
-    const activeAddOns = rawAddOns.filter(add => add?.isAddOnChoosen)
-    setFinalAddOns(activeAddOns)
-    const activePlan = rawPlan.filter(plan => plan?.isActive)
-    setFinalPlan(activePlan)
-    const combined = [...activeAddOns,...activePlan]
-    console.log(combined)
-    const total = combined.reduce((old, curr) => {
-      isPlanToggleYearly
-        ? (old += curr.pricePerYear)
-        : (old += curr.pricePerMonth);
-      return old
-    }, 0);
-    console.log(total)
+    const activeAddOns = rawAddOns.filter((add) => add?.isAddOnChoosen);
+    const activePlan = rawPlan.filter((plan) => plan?.isActive);
+    //
+    setFinalPlan(activePlan[0]);
+    setFinalAddOns(activeAddOns);
+    setFinalPrice(
+      [...activeAddOns, ...activePlan].reduce((old, curr) => {
+        isPlanToggleYearly
+          ? (old += curr.pricePerYear)
+          : (old += curr.pricePerMonth);
+        return old;
+      }, 0)
+    );
   };
   //
   useEffect(() => {
-    handleFinalCalcs(addOnsDetails,planDetails)
-  }, [isPlanToggleYearly])
+    handleFinalCalcs(addOnsDetails, planDetails);
+  }, [isPlanToggleYearly]);
   //
   return (
     <div className="finishing-up-page">
@@ -39,31 +39,48 @@ const FinishingUpPage = () => {
       <div className="finishing-up-details">
         <div className="finishing-up-details-prices">
           <div className="finishing-up-details-prices-plan">
-            <div>
-              <h2 className="add-ons-label">Arcade (Yearly)</h2>
-              <p className="plan-label-price">Change</p>
+            <div className="finishing-up-details-prices-labels">
+              <h2 className="add-ons-label">
+                {finalPlan?.title}{" "}
+                <span>{isPlanToggleYearly ? "(Yearly)" : "(Monthly)"}</span>
+              </h2>
+              <button
+                className="change-btn-label btn-plan-change"
+                onClick={() => {
+                  setIsPlanToggleYearly(!isPlanToggleYearly);
+                }}
+              >
+                Change
+              </button>
             </div>
-            <p className="final-plan-price-label">$90/yr</p>
+            <p className="final-plan-price-label">
+              {isPlanToggleYearly
+                ? `+$${finalPlan?.pricePerYear}/yr`
+                : `+$${finalPlan?.pricePerMonth}/mo`}
+            </p>
           </div>
           <div className="finishing-up-details-prices-addons">
-            {addOnsDetails?.map(add => {
-              if (add?.isAddOnChoosen)
-                return (
-                  <div key={add?.id}>
-                    <h3 className="plan-label-price">{add?.label}</h3>
-                    <p className="final-addons-price-label">
-                      {isPlanToggleYearly
-                        ? `+$${add?.pricePerYear}/yr`
-                        : `+$${add?.pricePerMonth}/mo`}
-                    </p>
-                  </div>
-                );
+            {finalAddOns?.map((add) => {
+              return (
+                <div key={add?.id}>
+                  <h3 className="plan-label-price">{add?.label}</h3>
+                  <p className="final-addons-price-label">
+                    {isPlanToggleYearly
+                      ? `+$${add?.pricePerYear}/yr`
+                      : `+$${add?.pricePerMonth}/mo`}
+                  </p>
+                </div>
+              );
             })}
           </div>
         </div>
         <div className="finishing-up-details-total">
-          <h3 className="plan-label-price">Total (per year)</h3>
-          <p className="total-price-label">$120/yr</p>
+          <h3 className="plan-label-price">
+            Total <span>{isPlanToggleYearly ? "(Per Year)" : "(Per Month)"}</span>
+          </h3>
+          <p className="total-price-label">
+            {isPlanToggleYearly ? `+$${totalPrice}/yr` : `+$${totalPrice}/mo`}
+          </p>
         </div>
       </div>
       <div className="btn-container-desk">
