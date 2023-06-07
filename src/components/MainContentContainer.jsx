@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StepCircles } from "../components";
 import {
   UserInfo,
