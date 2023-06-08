@@ -1,7 +1,15 @@
 import useGlobalContext from "../context/useGlobalContext";
+import useValidation from "../validation/useValidation";
 
 const NextPrevBtns = () => {
-  const { setIsFormComplete, currentStep, setCurrentStep } = useGlobalContext();
+  const { setIsFormComplete, currentStep, setCurrentStep, overallDetails } =
+    useGlobalContext();
+  const { userInputDetails } = overallDetails;
+  const { validation } = useValidation();
+  //
+  const handleValidation = (userValues) => {
+    validation(userValues)
+  };
   //
   return (
     <div className="btn-container-mob__inner">
@@ -23,6 +31,7 @@ const NextPrevBtns = () => {
       <button
         className="btn btn-next"
         onClick={() => {
+          handleValidation(userInputDetails);
           // setCurrentStep((prevValues) => {
           //   if (prevValues >= 4) {
           //     setIsFormComplete(true);
@@ -30,7 +39,6 @@ const NextPrevBtns = () => {
           //   }
           //   return prevValues + 1;
           // });
-          
         }}
       >
         {currentStep >= 4 ? "Confirm" : "Next Step"}
