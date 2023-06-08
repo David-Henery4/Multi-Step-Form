@@ -1,15 +1,21 @@
 import { useState } from "react";
-import { StepContainerMob, BtnContainerMob, MainContentContainer } from "./components";
+import {
+  StepContainerMob,
+  BtnContainerMob,
+  MainContentContainer,
+} from "./components";
+import useGlobalContext from "./context/useGlobalContext";
 
 function App() {
+  const { isFormComplete } = useGlobalContext();
   //
   return (
     <div className="wrapper main-grid">
       <StepContainerMob />
       {/**/}
-      <MainContentContainer/>
+      <MainContentContainer />
       {/**/}
-      <BtnContainerMob />
+      {isFormComplete || <BtnContainerMob />}
     </div>
   );
 }

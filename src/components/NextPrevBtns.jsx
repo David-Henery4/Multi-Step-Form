@@ -23,13 +23,14 @@ const NextPrevBtns = () => {
       <button
         className="btn btn-next"
         onClick={() => {
-          setCurrentStep((prevValues) => {
-            if (prevValues >= 4) {
-              setIsFormComplete(true);
-              return 4;
-            }
-            return prevValues + 1;
-          });
+          // setCurrentStep((prevValues) => {
+          //   if (prevValues >= 4) {
+          //     setIsFormComplete(true);
+          //     return 4;
+          //   }
+          //   return prevValues + 1;
+          // });
+          
         }}
       >
         {currentStep >= 4 ? "Confirm" : "Next Step"}
