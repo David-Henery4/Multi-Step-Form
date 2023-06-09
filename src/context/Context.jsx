@@ -4,6 +4,7 @@ import { addOnsDetails, planDetails, userInputDetails } from "../miscData";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const [confirmedErrorsList,setConfirmedErrorsList] = useState({})
   const [isFormComplete, setIsFormComplete] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [isPlanToggleYearly, setIsPlanToggleYearly] = useState(false);
@@ -29,6 +30,9 @@ const AppProvider = ({ children }) => {
         //
         isFormComplete,
         setIsFormComplete,
+        //
+        confirmedErrorsList,
+        setConfirmedErrorsList,
       }}
     >
       {children}

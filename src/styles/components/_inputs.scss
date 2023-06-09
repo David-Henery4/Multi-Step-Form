@@ -1,10 +1,14 @@
 .input-container{
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: .3rem;
+  @include respond (lap){
+    gap: .8rem;
+  }
   label{
     font-size: 1.2rem;
     font-weight: 500;
@@ -14,6 +18,23 @@
     width: 100%;
     padding: 1.2rem 1.6rem;
     border-radius: .4rem;
-    border: $borderColour 1px solid;
+    // border: $borderColour 1px solid;
   }
+}
+
+.input-error-label{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: $StrawberryRed;
+}
+
+.input-error-inactive{
+  border: $borderColour 1px solid;
+}
+
+.input-error-active{
+  border: $StrawberryRed 1px solid;
 }

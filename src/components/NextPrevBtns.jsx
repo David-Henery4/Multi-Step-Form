@@ -1,15 +1,26 @@
+import { useEffect } from "react";
 import useGlobalContext from "../context/useGlobalContext";
 import useValidation from "../validation/useValidation";
 
 const NextPrevBtns = () => {
-  const { setIsFormComplete, currentStep, setCurrentStep, overallDetails } =
-    useGlobalContext();
+  const {
+    setIsFormComplete,
+    currentStep,
+    setCurrentStep,
+    overallDetails,
+    confirmedErrorsList,
+    setConfirmedErrorsList,
+  } = useGlobalContext();
   const { userInputDetails } = overallDetails;
-  const { validation } = useValidation();
+  const { validation, isErrorsList } = useValidation();
   //
   const handleValidation = (userValues) => {
-    validation(userValues)
+    validation(userValues);
   };
+  //
+  useEffect(() => {
+    setConfirmedErrorsList(isErrorsList);
+  }, [isErrorsList]);
   //
   return (
     <div className="btn-container-mob__inner">
