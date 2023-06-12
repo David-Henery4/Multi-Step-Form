@@ -6,10 +6,8 @@ const UserInfoForm = () => {
     overallDetails,
     setOverallDetails,
     confirmedErrorsList,
-    setConfirmedErrorsList,
   } = useGlobalContext();
   const { userInputDetails } = overallDetails;
-  // const { isErrorsList } = useValidation();
   //
   return (
     <form className="user-info__form">

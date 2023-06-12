@@ -4,15 +4,15 @@ import useValidation from "../validation/useValidation";
 
 const NextPrevBtns = () => {
   const {
-    setIsFormComplete,
     currentStep,
     setCurrentStep,
     overallDetails,
-    confirmedErrorsList,
     setConfirmedErrorsList,
+    handleUserInfoSubmit,
   } = useGlobalContext();
   const { userInputDetails } = overallDetails;
-  const { validation, isErrorsList } = useValidation();
+  //
+  const { validation, isErrorsList } = useValidation(handleUserInfoSubmit);
   //
   const handleValidation = (userValues) => {
     validation(userValues);
@@ -43,13 +43,6 @@ const NextPrevBtns = () => {
         className="btn btn-next"
         onClick={() => {
           handleValidation(userInputDetails);
-          // setCurrentStep((prevValues) => {
-          //   if (prevValues >= 4) {
-          //     setIsFormComplete(true);
-          //     return 4;
-          //   }
-          //   return prevValues + 1;
-          // });
         }}
       >
         {currentStep >= 4 ? "Confirm" : "Next Step"}

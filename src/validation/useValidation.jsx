@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useValidation = (useCallback) => {
+const useValidation = (callback) => {
   const [inputValuesLength, setInputValuesLength] = useState(0);
   const [isErrorsList, setIsErrorsList] = useState({});
   const [checkedValuesList, setCheckedValuesList] = useState({});
@@ -81,15 +81,23 @@ const useValidation = (useCallback) => {
     Object.entries(values).forEach((v) => {
       v[0] === "email" ? checkEmail(v) : checkValue(v);
     });
+    setInputValuesLength(Object.keys(values).length);
   };
   //
   const handleSubmit = () => {
-
+    callback(checkedValuesList);
   }
   //
-  // useEffect(() => {
-
-  // }, [])
+  useEffect(() => {
+    checkedValuesList
+    if (
+      inputValuesLength === Object.entries(checkedValuesList).length &&
+      Object.entries(isErrorsList).length <= 0 &&
+      Object.entries(checkedValuesList).length > 1
+    ) {
+      handleSubmit();
+    }
+  }, [isErrorsList,checkedValuesList,inputValuesLength])
   //
   return { validation, isErrorsList };
 };
