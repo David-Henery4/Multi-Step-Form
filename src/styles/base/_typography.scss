@@ -61,6 +61,7 @@ body{
   font-size: $stepLabelText;
   color: $marineBlue;
   font-weight: 500;
+  pointer-events: none;
   @include respond (lap) {
     font-size: $bodyText
   }

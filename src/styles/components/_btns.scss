@@ -9,6 +9,9 @@
   &-back{
     background-color: transparent;
     color: $coolGrey;
+    &:hover{
+      color: $marineBlue;
+    }
   }
   &-next{
     width: 97px;
@@ -20,6 +23,18 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    &:hover{
+      background-color: $lightNavy;
+    }
+    &:active{
+      background-color: $marineBlue;
+    }
+  }
+  &-confirm{
+    @extend .btn-next;
+    &:hover{
+      background-color: $lightPurple;
+    }
   }
   &-plan-change{
     background-color: transparent;
@@ -27,6 +42,8 @@
     border-bottom: 1px solid $coolGrey;
     &:hover{
       cursor: pointer;
+      color: $purplishBlue;
+      border-bottom: 1px solid $purplishBlue;
     }
   }
 }

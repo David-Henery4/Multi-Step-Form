@@ -46,6 +46,7 @@
     border: 1px solid $borderColour;
     &:hover{
       cursor: pointer;
+      border: 1px solid $purplishBlue;
     }
     @include respond(lap) {
       flex-direction: column;
@@ -53,6 +54,7 @@
     }
     &--active {
       border: 1px solid $purplishBlue;
+      background-color: $AlabasterVeryLightGrey;
     }
     &-text {
       display: grid;

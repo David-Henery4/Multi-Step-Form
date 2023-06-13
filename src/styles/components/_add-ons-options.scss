@@ -13,8 +13,13 @@
     border-radius: 8px;
     gap: 1.6rem;
     grid-template-columns: min-content 1fr min-content;
+    &:hover{
+      cursor: pointer;
+      border: $purplishBlue 1px solid;
+    }
     &--active{
       border: $purplishBlue 1px solid;
+      background-color: $AlabasterVeryLightGrey;
     }
     input {
       width: 2rem;

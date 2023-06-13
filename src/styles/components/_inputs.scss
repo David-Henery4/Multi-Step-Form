@@ -1,27 +1,31 @@
-.input-container{
+.input-container {
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: .3rem;
-  @include respond (lap){
-    gap: .8rem;
+  gap: 0.3rem;
+  @include respond(lap) {
+    gap: 0.8rem;
   }
-  label{
+  label {
     font-size: 1.2rem;
     font-weight: 500;
     color: $marineBlue;
   }
-  input{
+  input {
     width: 100%;
     padding: 1.2rem 1.6rem;
-    border-radius: .4rem;
+    border-radius: 0.4rem;
+    &:focus {
+      border: 1px solid $purplishBlue;
+      outline: none;
+    }
   }
 }
 
-.input-error-label{
+.input-error-label {
   position: absolute;
   top: 0;
   right: 0;
@@ -30,10 +34,29 @@
   color: $StrawberryRed;
 }
 
-.input-error-inactive{
+.input-error-inactive {
   border: $borderColour 1px solid;
 }
 
-.input-error-active{
+.input-error-active {
   border: $StrawberryRed 1px solid;
+}
+
+// REMOVE HISTORY INPUT STYLING
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+// REMOVE ARROW FROM TYPE="NUMBER" INPUTS
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
 }

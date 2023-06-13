@@ -39,14 +39,25 @@ const NextPrevBtns = () => {
           Go Back
         </button>
       )}
-      <button
-        className="btn btn-next"
-        onClick={() => {
-          handleValidation(userInputDetails);
-        }}
-      >
-        {currentStep >= 4 ? "Confirm" : "Next Step"}
-      </button>
+      {currentStep >= 4 ? (
+        <button
+          className="btn btn-confirm"
+          onClick={() => {
+            handleValidation(userInputDetails);
+          }}
+        >
+          Confirm
+        </button>
+      ) : (
+        <button
+          className="btn btn-next"
+          onClick={() => {
+            handleValidation(userInputDetails);
+          }}
+        >
+          Next Step
+        </button>
+      )}
     </div>
   );
 };

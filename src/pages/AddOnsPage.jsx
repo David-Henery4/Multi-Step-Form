@@ -1,14 +1,24 @@
-import { useState } from "react";
 import { ContentHeaders, NextPrevBtns } from "../components";
-// WILL PROB PUT IN STATE DATA
-// import addOnsDetails from "../miscData/addOnsDetails";
 import useGlobalContext from "../context/useGlobalContext";
 
 const AddOnsPage = () => {
   const { overallDetails, setOverallDetails, isPlanToggleYearly } =
     useGlobalContext();
   const { addOnsDetails } = overallDetails;
-  // const [addOns,setAddOns] = useState(addOnsDetails)
+  //
+  const handleCheckboxToggles = (addOn) => {
+    setOverallDetails((oldValues) => {
+      const copy = JSON.parse(JSON.stringify(addOnsDetails));
+      return {
+        ...oldValues,
+        addOnsDetails: copy.map((add) => {
+          if (add?.id === addOn?.id)
+            add.isAddOnChoosen = !addOn?.isAddOnChoosen;
+          return add;
+        }),
+      };
+    });
+  }
   //
   return (
     <div className="add-ons-page">
@@ -26,6 +36,7 @@ const AddOnsPage = () => {
                   : "add-ons-options-option"
               }`}
               key={addOn?.id}
+              onClick={() => handleCheckboxToggles(addOn)}
             >
               <input
                 type="checkbox"
@@ -33,18 +44,8 @@ const AddOnsPage = () => {
                 id={`${addOn?.name}`}
                 checked={addOn?.isAddOnChoosen}
                 onChange={(e) => {
-                  setOverallDetails((oldValues) => {
-                    return {
-                      ...oldValues,
-                      addOnsDetails: oldValues?.addOnsDetails.map((add) => {
-                        if (add?.id === addOn?.id)
-                          add.isAddOnChoosen = e.target.checked;
-                        return add;
-                      }),
-                    };
-                  });
+                  e.currentTarget.checked = addOn?.isAddOnChoosen
                 }}
-                // checked
               />
               <div>
                 <label className="add-ons-label" htmlFor={`${addOn?.name}`}>
