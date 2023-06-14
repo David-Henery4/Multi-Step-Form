@@ -83,7 +83,7 @@ const UserInfoForm = () => {
               : "input-error-inactive"
           }
           placeholder="e.g +1 234 567 890"
-          type="number"
+          type="tel"
           value={userInputDetails?.phone}
           onChange={(e) => {
             setOverallDetails((oldValues) => {
