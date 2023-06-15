@@ -37,6 +37,8 @@ Users are able to:
 
 ### Links
 
+(Links need to be added)
+
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
@@ -56,22 +58,74 @@ Users are able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+While I didn't really learn anything new in this project, It served as a good refresher for a few things I haven't used for a while.
 
-To see how you can add code snippets, see below:
+The main refresher for me was using the "useContext" hook. I haven't used this in a project for a long time but I thought it was the perfect project to use it, as it allowed me to use state values thoughout the project's components without prop drilling and helped retained the values when changing though the different stages of the form.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+I choose this over other things because I believed this was the right tool for the job, because it is lightweight and already built into react. Rather than a third-party state-management library like redux-toolkit, which I felt would of been a massive overkill for a project like this.
+
+Here is an example of my useContext hook
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+import { useState, createContext } from "react";
+import { addOnsDetails, planDetails, userInputDetails } from "../miscData";
+
+const AppContext = createContext();
+
+const AppProvider = ({ children }) => {
+  const [confirmedErrorsList, setConfirmedErrorsList] = useState({});
+  const [isFormComplete, setIsFormComplete] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isPlanToggleYearly, setIsPlanToggleYearly] = useState(false);
+  const [overallDetails, setOverallDetails] = useState({
+    addOnsDetails,
+    planDetails,
+    userInputDetails,
+  });
+  //
+  const handleUserInfoSubmit = (validatedUserInfoValues) => {
+    setOverallDetails((prevValues) => {
+      setCurrentStep((prevValues) => {
+        if (prevValues >= 4) {
+          setIsFormComplete(true);
+          return 4;
+        }
+        return prevValues + 1;
+      });
+      return {
+        ...prevValues,
+        userInputDetails: validatedUserInfoValues,
+      };
+    })
+  };
+  //
+  return (
+    <AppContext.Provider
+      value={{
+        overallDetails,
+        setOverallDetails,
+        //
+        isPlanToggleYearly,
+        setIsPlanToggleYearly,
+        //
+        currentStep,
+        setCurrentStep,
+        //
+        isFormComplete,
+        setIsFormComplete,
+        //
+        confirmedErrorsList,
+        setConfirmedErrorsList,
+        //
+        handleUserInfoSubmit,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+
+export { AppContext, AppProvider };
 ```
 
 ## Author
